@@ -20,17 +20,17 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         //-----------
         
-        print("The keys selected:")
-        
-        for (key,value) in Singleton.singletonInstance.dictionnary {
-            
-            
-            if(value == true)
-            {
-                print(key)
-            }
-            
-        }
+//        print("The keys selected:")
+//        
+//        for (key,value) in Singleton.singletonInstance.dictionnary {
+//            
+//            
+//            if(value == true)
+//            {
+//                print(key)
+//            }
+//            
+//        }
         
         
     }
@@ -48,9 +48,24 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     //---------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
-        cell.textLabel!.text = addOBJ.keys[indexPath.row]
+        
+       // cell.textLabel!.text = addOBJ.keys[indexPath.row]
+       //--------------------
+        
+            if(addOBJ.values[indexPath.row] == true)
+            {
+                cell.textLabel!.text = addOBJ.keys[indexPath.row]
+                
+
+            
+        }
+
+        
+        
+        //--------------------
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear
+      
         return cell
     }
     //---------------------

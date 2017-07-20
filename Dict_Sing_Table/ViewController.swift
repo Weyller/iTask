@@ -19,9 +19,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //---------------------------
     @IBAction func addButton(_ sender: UIButton) {
-        addObject.addValue(keyToAdd: addField.text!)
-        tableView.reloadData()
-        addField.text = ""
+        
+        if (addField.text?.isEmpty)!
+        {
+          return
+        }
+        else
+        {
+            addObject.addValue(keyToAdd: addField.text!)
+            tableView.reloadData()
+            addField.text = ""
+        }
+        
+       
     }
     //---------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,6 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
+       
         
         Singleton.singletonInstance.dictionnary[key] = true
         
