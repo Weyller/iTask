@@ -10,6 +10,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+               
+        
     }
     //---------------------------
     override func didReceiveMemoryWarning() {
@@ -38,6 +40,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.darkGray
+        
+        //--------------------------------------
+        let key = addObject.keys[indexPath.row]
+        
+        Singleton.singletonInstance.dictionnary[key] = true
+        
+        Singleton.singletonInstance.saveData()
+        
+        //---------------------------------------
+        
+        print(key)
     }
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
