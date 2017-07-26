@@ -47,8 +47,11 @@ class jsonManager{
     func loadDictionaryFromJason(){
         
         
-         var dict : [String: String] = [:]
-        
+        var dict : [String: String] = [:]
+        var dictionaryLoaded:[String: Bool] = [:]
+        var keys:[String] = []
+        var values:[Bool] = []
+        //------------------------
         let requestURL: NSURL = NSURL(string: "http://localhost:8888/dashboard/weyller/jsonPHP/data.json")!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url:
             requestURL as URL)
@@ -67,12 +70,40 @@ class jsonManager{
                         data!, options:.allowFragments)
                     
                     dict  = json as! [String : String]
-                    
-                    for (x, y) in dict{
-                        print("key: \(x) : value: \(y)" )
+                    //======================
+                    for(k, v) in dict{
+                        
+                        keys.append(k)
+                        if(v == "false"){
+                            
+                            values.append(false)
+                        }
+                        else {
+                            values.append(true)
+                        }
                     }
-                    //print(json)
                     
+                    
+                    //======================
+                    var index = 0
+                    
+                    for key in keys{
+                        for _ in values{
+                            
+                            dictionaryLoaded[key] = values[index]
+                        }
+                        index += 1
+                    }
+                    
+                    print("Loaded dict: \(dictionaryLoaded)")
+                    
+                    Singleton.singletonInstance.dictionnary = dictionaryLoaded
+                    
+                    print(Singleton.singletonInstance.dictionnary)
+                    
+                    
+                    
+                    //--------------
                 }catch {
                     print("Erreur Json: \(error)")
                 }

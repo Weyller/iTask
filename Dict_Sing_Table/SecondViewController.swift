@@ -86,7 +86,7 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
+           addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
     }

@@ -50,6 +50,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         managerJson.loadDictionaryFromJason()
         
+      self.setNeedsFocusUpdate()
+        tableView.reloadData()
+        
     }
     
     //---------------------------
