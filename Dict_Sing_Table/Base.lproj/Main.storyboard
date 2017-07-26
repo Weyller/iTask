@@ -69,6 +69,9 @@
                                     <constraint firstAttribute="width" constant="346" id="XcZ-Cc-5Ba"/>
                                 </constraints>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveToJson:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zca-0c-z46"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="flN-Qj-r5x">
                                 <rect key="frame" x="16" y="218" width="346" height="264"/>

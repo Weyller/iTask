@@ -8,6 +8,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------------
     let addObject = Add()
     //---------------------------
+    let managerJson = jsonManager()
+    //---------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +39,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
        
     }
+    //---------------------------
+    @IBAction func saveToJson(_ sender: UIButton) {
+        
+        managerJson.saveDictionaryToJason()
+        print("Data saved successfully")
+    }
+    
+    
     //---------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
