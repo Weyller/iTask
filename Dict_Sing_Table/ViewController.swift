@@ -45,7 +45,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         managerJson.saveDictionaryToJason()
         print("Data saved successfully")
     }
-    
+    //---------------------------
+    @IBAction func loadJsonFromWeb(_ sender: UIButton) {
+        
+        managerJson.loadDictionaryFromJason()
+        
+    }
     
     //---------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

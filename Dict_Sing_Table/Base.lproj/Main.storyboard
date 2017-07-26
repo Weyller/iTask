@@ -60,6 +60,9 @@
                                     <constraint firstAttribute="width" constant="346" id="jXv-VM-tgk"/>
                                 </constraints>
                                 <state key="normal" title="Load"/>
+                                <connections>
+                                    <action selector="loadJsonFromWeb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vP1-gs-mJT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2W-iv-QDE">
                                 <rect key="frame" x="16" y="497" width="346" height="30"/>
