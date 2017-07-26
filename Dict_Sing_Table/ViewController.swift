@@ -55,6 +55,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let key = addObject.keys[indexPath.row]
        
         
+          
+        
         Singleton.singletonInstance.dictionnary[key] = true
         
         Singleton.singletonInstance.saveData()

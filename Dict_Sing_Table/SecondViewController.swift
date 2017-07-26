@@ -7,6 +7,12 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     let addOBJ = Add()
     
+    var dic: [String: Bool]!
+    var keys: [String] = []
+    var values: [Bool] = []
+
+    
+    
     //---------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,17 +26,21 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         //-----------
         
-//        print("The keys selected:")
-//        
-//        for (key,value) in Singleton.singletonInstance.dictionnary {
-//            
-//            
-//            if(value == true)
-//            {
-//                print(key)
-//            }
-//            
-//        }
+        print("The keys selected:")
+        
+        for (key,value) in Singleton.singletonInstance.dictionnary {
+            
+            
+            if(value == true)
+            {
+                print(key)
+            }
+            
+        }
+        
+      
+        
+        
         
         
     }

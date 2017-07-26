@@ -13,7 +13,10 @@ class Add {
         } else {
             dictionnary = [:]
         }
-        parseDict()
+        
+               parseDict()
+        
+         
     }
     //---------------------------
     func parseDict() {
@@ -22,7 +25,11 @@ class Add {
         for (k, v) in dictionnary {
             keys.append(k)
             values.append(v)
+           
+            
         }
+        
+        
     }
     //---------------------------
     func addValue(keyToAdd: String) {

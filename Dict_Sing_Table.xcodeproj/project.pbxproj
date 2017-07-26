@@ -116,6 +116,7 @@
 				TargetAttributes = {
 					9B05E7B61F0C09DE001A0BB9 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = VG39R6Y662;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -284,6 +285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VG39R6Y662;
 				INFOPLIST_FILE = Dict_Sing_Table/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mariogeneau.Dict-Sing-Table";
@@ -296,6 +298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VG39R6Y662;
 				INFOPLIST_FILE = Dict_Sing_Table/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mariogeneau.Dict-Sing-Table";
@@ -323,6 +326,7 @@
 				9B05E7CB1F0C09DF001A0BB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
