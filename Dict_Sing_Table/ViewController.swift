@@ -10,7 +10,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-               
+        
+        for (k,_) in Singleton.singletonInstance.dictionnary{
+            Singleton.singletonInstance.dictionnary[k] = false
+        }
+        print("Viewdidload dict: \(Singleton.singletonInstance.dictionnary)")
         
     }
     //---------------------------
@@ -48,22 +52,48 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //---------------------
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
-        selectedCell.contentView.backgroundColor = UIColor.darkGray
         
+        
+        
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
+       selectedCell.contentView.backgroundColor = UIColor.lightGray
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
+
        
+//        var aDict = Singleton.singletonInstance.dictionnary!
+//        
+//        if !Array(aDict.values)[indexPath.row] {
+//            aDict[Array(aDict.keys)[indexPath.row]] = true
+//        } else {
+//            aDict[Array(aDict.keys)[indexPath.row]] = false
+//        }
+//        
+//        
+//        print("adict: \(aDict)")
+    
+       // let isTapped = Singleton.singletonInstance.dictionnary[key] == false ? true : false
         
-          
+       // Singleton.singletonInstance.dictionnary[key] = isTapped
         
-        Singleton.singletonInstance.dictionnary[key] = true
         
-        Singleton.singletonInstance.saveData()
+        //---------------------------------------------
+        if !Singleton.singletonInstance.dictionnary[key]!
+        {
+            Singleton.singletonInstance.dictionnary[key] = true
+                    }
+        else{
+            Singleton.singletonInstance.dictionnary[key] = false
+            
+        }
+        
+        
         
         //---------------------------------------
+        //
         
-        print(Singleton.singletonInstance.dictionnary)
+
+        print("Singleton: \(Singleton.singletonInstance.dictionnary)")
     }
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
