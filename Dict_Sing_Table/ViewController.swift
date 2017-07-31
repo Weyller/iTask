@@ -10,19 +10,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------------
     let managerJson = jsonManager()
     //---------------------------
+   
+    @IBOutlet weak var loadButton: UIButton!
+    
+    //-----------------------------
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        for (k,_) in Singleton.singletonInstance.dictionnary{
-            Singleton.singletonInstance.dictionnary[k] = false
-        }
-        print("Viewdidload dict: \(Singleton.singletonInstance.dictionnary)")
+//        if !Singleton.singletonInstance.dictionnary.isEmpty{
+//            
+//            for (k,_) in Singleton.singletonInstance.dictionnary{
+//                
+//                Singleton.singletonInstance.dictionnary[k] = false
+//                
+//            }
+//            print("Viewdidload dict: \(Singleton.singletonInstance.dictionnary)")
+//
+//            
+//        }
         
     }
     //---------------------------
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
+    
+    
     //---------------------------
     @IBAction func addButton(_ sender: UIButton) {
         
@@ -32,9 +48,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         else
         {
+            //alert("Adding one new task to the list...")
             addObject.addValue(keyToAdd: addField.text!)
             tableView.reloadData()
             addField.text = ""
+            
         }
         
        
@@ -42,16 +60,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------------
     @IBAction func saveToJson(_ sender: UIButton) {
         
+        //alert("Saving list to online database...")
         managerJson.saveDictionaryToJason()
         print("Data saved successfully")
     }
     //---------------------------
     @IBAction func loadJsonFromWeb(_ sender: UIButton) {
         
-        managerJson.loadDictionaryFromJason()
+        let reloadAlert = UIAlertController(title: "Alert - Loading database from online site...", message: "Do you really want to load the online database and replace with this one?", preferredStyle: UIAlertControllerStyle.alert)
         
-      self.setNeedsFocusUpdate()
-        tableView.reloadData()
+        reloadAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.doReloadData()
+        }))
+        
+        reloadAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        present(reloadAlert, animated: true, completion: nil)
         
     }
     
@@ -63,33 +88,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
+     
         cell.textLabel!.text = addObject.keys[indexPath.row]
+        
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear
+        print("From addOject.keys \(addObject.keys)")
+        
         return cell
     }
     //---------------------
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        
+  
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
        selectedCell.contentView.backgroundColor = UIColor.lightGray
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
 
-       
-//        var aDict = Singleton.singletonInstance.dictionnary!
-//        
-//        if !Array(aDict.values)[indexPath.row] {
-//            aDict[Array(aDict.keys)[indexPath.row]] = true
-//        } else {
-//            aDict[Array(aDict.keys)[indexPath.row]] = false
-//        }
-//        
-//        
-//        print("adict: \(aDict)")
-    
        // let isTapped = Singleton.singletonInstance.dictionnary[key] == false ? true : false
         
        // Singleton.singletonInstance.dictionnary[key] = isTapped
@@ -121,5 +137,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     //---------------------
+    
+    
+    /* ---------------------------------------*/
+    @IBAction func reload(_ sender: UIButton)
+    {
+        let reloadAlert = UIAlertController(title: "Alert - Loading database from online site...", message: "Do you really want to load the online database and replace with this one?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        reloadAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.doReloadData()
+        }))
+        
+        reloadAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        present(reloadAlert, animated: true, completion: nil)
+    }
+    /* ---------------------------------------*/
+    func doReloadData()
+    {
+        managerJson.loadDictionaryFromJason()
+        
+        addObject.saveToSingleton()
+        self.setNeedsFocusUpdate()
+        self.tableView.reloadData()
+        performSegue(withIdentifier: "load", sender: self)
+         }
+    /* ---------------------------------------*/
+    func alert(_ theMessage: String)
+    {
+        let refreshAlert = UIAlertController(title: "Message...", message: theMessage, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        refreshAlert.addAction(OKAction)
+        present(refreshAlert, animated: true){}
+    }
+
+
 }
 //==============================

@@ -44,15 +44,16 @@ class jsonManager{
     }
     //-------------------------------------------------------------------
     
+    
     func loadDictionaryFromJason(){
         
-        
+       
         var dict : [String: String] = [:]
         var dictionaryLoaded:[String: Bool] = [:]
         var keys:[String] = []
         var values:[Bool] = []
         //------------------------
-        let requestURL: NSURL = NSURL(string: "http://localhost:8888/dashboard/weyller/jsonPHP/data.json")!
+        let requestURL: NSURL = NSURL(string: "http://localhost:8888/dashboard/weyller/jsonPHP/data2.json")!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url:
             requestURL as URL)
         let session = URLSession.shared
@@ -84,6 +85,8 @@ class jsonManager{
                     }
                     
                     
+                    print("Printing Dict: \(dict)")
+                    
                     //======================
                     var index = 0
                     
@@ -95,12 +98,12 @@ class jsonManager{
                         index += 1
                     }
                     
-                    print("Loaded dict: \(dictionaryLoaded)")
+                    //print("Loaded dict: \(dictionaryLoaded)")
                     
                     Singleton.singletonInstance.dictionnary = dictionaryLoaded
                     
                     print(Singleton.singletonInstance.dictionnary)
-                    
+            
                     
                     
                     //--------------
