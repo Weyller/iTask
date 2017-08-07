@@ -16,7 +16,9 @@ class jsonManager{
 
         //--------------------------
         let dictionary = Singleton.singletonInstance.dictionnary
-        var urlToSend = "http://localhost:8888/dashboard/weyller/jsonPHP/add.php?json=["
+        var urlToSend = "http://localhost:dashboard/weyller/jsonPHP/add.php?json=["
+
+//        var urlToSend = "http://localhost:8888/dashboard/weyller/jsonPHP/add.php?json=["
         ///Applications/XAMPP/xamppfiles/htdocs/dashboard/Weyller/jsonPHP/data.json
         // localhost/dashboard/weyller/jsonPHP/
         var counter = 0
@@ -53,7 +55,8 @@ class jsonManager{
         var keys:[String] = []
         var values:[Bool] = []
         //------------------------
-        let requestURL: NSURL = NSURL(string: "http://localhost:8888/dashboard/weyller/jsonPHP/data2.json")!
+        let requestURL: NSURL = NSURL(string: "http://localhost:dashboard/weyller/jsonPHP/data2.json")!
+//        let requestURL: NSURL = NSURL(string: "http://localhost:8888/dashboard/weyller/jsonPHP/data2.json")!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url:
             requestURL as URL)
         let session = URLSession.shared

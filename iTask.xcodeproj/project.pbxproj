@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B05E7B71F0C09DF001A0BB9 /* Dict_Sing_Table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dict_Sing_Table.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B05E7B71F0C09DF001A0BB9 /* iTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B05E7BA1F0C09DF001A0BB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B05E7BC1F0C09DF001A0BB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9B05E7BF1F0C09DF001A0BB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		9B05E7B81F0C09DF001A0BB9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B05E7B71F0C09DF001A0BB9 /* Dict_Sing_Table.app */,
+				9B05E7B71F0C09DF001A0BB9 /* iTask.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,9 +90,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B05E7B61F0C09DE001A0BB9 /* Dict_Sing_Table */ = {
+		9B05E7B61F0C09DE001A0BB9 /* iTask */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B05E7C91F0C09DF001A0BB9 /* Build configuration list for PBXNativeTarget "Dict_Sing_Table" */;
+			buildConfigurationList = 9B05E7C91F0C09DF001A0BB9 /* Build configuration list for PBXNativeTarget "iTask" */;
 			buildPhases = (
 				9B05E7B31F0C09DE001A0BB9 /* Sources */,
 				9B05E7B41F0C09DE001A0BB9 /* Frameworks */,
@@ -102,9 +102,9 @@
 			);
 			dependencies = (
 			);
-			name = Dict_Sing_Table;
+			name = iTask;
 			productName = Dict_Sing_Table;
-			productReference = 9B05E7B71F0C09DF001A0BB9 /* Dict_Sing_Table.app */;
+			productReference = 9B05E7B71F0C09DF001A0BB9 /* iTask.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +124,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9B05E7B21F0C09DE001A0BB9 /* Build configuration list for PBXProject "Dict_Sing_Table" */;
+			buildConfigurationList = 9B05E7B21F0C09DE001A0BB9 /* Build configuration list for PBXProject "iTask" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -137,7 +137,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B05E7B61F0C09DE001A0BB9 /* Dict_Sing_Table */,
+				9B05E7B61F0C09DE001A0BB9 /* iTask */,
 			);
 		};
 /* End PBXProject section */
@@ -292,7 +292,7 @@
 				DEVELOPMENT_TEAM = VG39R6Y662;
 				INFOPLIST_FILE = Dict_Sing_Table/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mariogeneau.Dict-Sing-Table";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wd.itask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -305,7 +305,7 @@
 				DEVELOPMENT_TEAM = VG39R6Y662;
 				INFOPLIST_FILE = Dict_Sing_Table/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mariogeneau.Dict-Sing-Table";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wd.itask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -314,7 +314,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B05E7B21F0C09DE001A0BB9 /* Build configuration list for PBXProject "Dict_Sing_Table" */ = {
+		9B05E7B21F0C09DE001A0BB9 /* Build configuration list for PBXProject "iTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B05E7C71F0C09DF001A0BB9 /* Debug */,
@@ -323,7 +323,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B05E7C91F0C09DF001A0BB9 /* Build configuration list for PBXNativeTarget "Dict_Sing_Table" */ = {
+		9B05E7C91F0C09DF001A0BB9 /* Build configuration list for PBXNativeTarget "iTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B05E7CA1F0C09DF001A0BB9 /* Debug */,
