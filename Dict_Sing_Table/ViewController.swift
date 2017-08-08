@@ -36,6 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
+      
     }
     
     
@@ -48,10 +49,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         else
         {
-            //alert("Adding one new task to the list...")
+           // alert("Adding one new task to the list...")
             addObject.addValue(keyToAdd: addField.text!)
             tableView.reloadData()
-            addField.text = ""
+             addField.text = ""
             
         }
         
@@ -60,7 +61,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------------
     @IBAction func saveToJson(_ sender: UIButton) {
         
-        //alert("Saving list to online database...")
+        alert("Saving list to online database...")
         managerJson.saveDictionaryToJason()
         print("Data saved successfully")
     }
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let reloadAlert = UIAlertController(title: "Alert - Loading database from online site...", message: "Do you really want to load the online database and replace with this one?", preferredStyle: UIAlertControllerStyle.alert)
         
         reloadAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.doReloadData()
+            self.do_table_refresh()
         }))
         
         reloadAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
@@ -93,9 +94,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear
-        print("From addOject.keys \(addObject.keys)")
+        
+
+        //print("From addOject.keys \(addObject.keys)")
         
         return cell
+        
+
     }
     //---------------------
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -140,19 +145,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     /* ---------------------------------------*/
-    @IBAction func reload(_ sender: UIButton)
+
+    func do_table_refresh()
     {
-        let reloadAlert = UIAlertController(title: "Alert - Loading database from online site...", message: "Do you really want to load the online database and replace with this one?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        reloadAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            self.doReloadData()
-        }))
-        
-        reloadAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
-        }))
-        
-        present(reloadAlert, animated: true, completion: nil)
+        DispatchQueue.main.async(execute: {
+           
+            self.managerJson.loadDictionaryFromJason()
+//            self.addObject.saveToSingleton()
+            self.tableView.reloadData()
+            self.alert("main thread")
+            
+        })
     }
+    
+    
+    
+    
     /* ---------------------------------------*/
     func doReloadData()
     {
@@ -161,7 +169,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         addObject.saveToSingleton()
         self.setNeedsFocusUpdate()
         self.tableView.reloadData()
-        performSegue(withIdentifier: "load", sender: self)
+       // performSegue(withIdentifier: "load", sender: self)
          }
     /* ---------------------------------------*/
     func alert(_ theMessage: String)
