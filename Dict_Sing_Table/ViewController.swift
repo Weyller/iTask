@@ -124,13 +124,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
         
+        
         cell.textLabel!.text = addObject.keys[indexPath.row]
         
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear
         
-        //print("From addOject.keys \(addObject.keys)")
-        print(addObject.dictionnary)
+        print("From addOject.keys \(addObject.keys)")
+        print("refreshing data")
         
         return cell
     }
@@ -185,14 +186,110 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------
     func do_table_refresh()
     {
-        DispatchQueue.main.async(execute: {
+        var dict : [String: String] = [:]
+        var dictionaryLoaded:[String: Bool] = [:]
+        var keys:[String] = []
+        var values:[Bool] = []
+        //------------------------
+        let requestURL: NSURL = NSURL(string: "http://localhost:/dashboard/weyller/jsonPHP/data.json")!
+        //let requestURL: NSURL = NSURL(string: "http://localhost:8888/dashboard/weyller/jsonPHP/data2.json")!
+        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url:
+            requestURL as URL)
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: urlRequest as URLRequest) {
+            (data, response, error) -> Void in
             
-            self.managerJson.loadDictionaryFromJason()
-            //            self.addObject.saveToSingleton()
-            self.tableView.reloadData()
-           
+            let httpResponse = response as! HTTPURLResponse
+            let statusCode = httpResponse.statusCode
             
-        })
+            if (statusCode == 200) {
+                print("Tout fonctionne correctement...")
+                do{
+                    let json = try JSONSerialization.jsonObject(with:
+                        data!, options:.allowFragments)
+                    
+                    dict  = json as! [String : String]
+                    //======================
+                    for(k, v) in dict{
+                        
+                        keys.append(k)
+                        if(v == "false"){
+                            
+                            values.append(false)
+                        }
+                        else {
+                            values.append(true)
+                        }
+                    }
+                    
+                    
+                    print("Printing Dict: \(dict)")
+                    print("keys \(keys)")
+                                                            //======================
+                    for k in keys{
+                        self.addObject.keys.append(k)
+                    }
+
+                    
+                    DispatchQueue.main.async {
+                        
+                        //self.addObject.saveToSingleton()
+                        self.tableView.reloadData()
+                        
+                    }
+                    print("keys in addObjet \(self.addObject.keys)")
+
+                    
+                    
+                    //-----------------------------
+                    
+//                    var index = 0
+//                    
+//                    for key in keys{
+//                      
+//                        for _ in values{
+//                            
+//                            dictionaryLoaded[key] = values[index]
+//                            
+//                        }
+//                        index += 1
+//                    }
+                    
+                   // print(dictionaryLoaded)
+                    
+                   // print("keys in addObjet BEFORE\(self.addObject.keys)")
+                    
+                    //Singleton.singletonInstance.dictionnary = dictionaryLoaded
+                    
+                    print(Singleton.singletonInstance.dictionnary)
+                    
+                   // Singleton.singletonInstance.saveData()
+                    print("keys in addObjet AFTER\(self.addObject.keys)")
+                    
+                 //   print(Singleton.singletonInstance.dictionnary)
+                   
+                    
+                    
+                    
+                    //--------------
+                }catch {
+                    print("Erreur Json: \(error)")
+                }
+            }
+        }
+        task.resume()
+        
+        
+        
+        
+//        DispatchQueue.main.async {
+//            
+//            //self.managerJson.loadDictionaryFromJason()
+//            //self.addObject.saveToSingleton()
+//            self.tableView.reloadData()
+//            
+//        }
     }
     
     

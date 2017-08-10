@@ -11,13 +11,16 @@ import UIKit
 class jsonManager{
     
     
+    
+    var addObj = Add()
+    
     func saveDictionaryToJason() {
         
 
         //--------------------------
         let dictionary = Singleton.singletonInstance.dictionnary
         var urlToSend = "http://localhost/dashboard/weyller/jsonPHP/add.php?json=["
-
+        
         //var urlToSend = "http://localhost:8888/dashboard/weyller/jsonPHP/add.php?json=["
         
         var counter = 0
@@ -107,7 +110,7 @@ class jsonManager{
                     Singleton.singletonInstance.saveData()
                     
                     print(Singleton.singletonInstance.dictionnary)
-            
+                            print(self.addObj.keys)
                     
                     
                     //--------------
