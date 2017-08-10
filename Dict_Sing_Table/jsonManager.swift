@@ -104,6 +104,8 @@ class jsonManager{
                     
                     Singleton.singletonInstance.dictionnary = dictionaryLoaded
                     
+                    Singleton.singletonInstance.saveData()
+                    
                     print(Singleton.singletonInstance.dictionnary)
             
                     

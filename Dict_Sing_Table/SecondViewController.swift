@@ -39,10 +39,6 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
         
       
-        
-        
-        
-        
     }
     //---------------------------
     override func didReceiveMemoryWarning() {
