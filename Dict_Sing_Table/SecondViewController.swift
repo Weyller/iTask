@@ -11,6 +11,7 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     var keys: [String] = []
     var values: [Bool] = []
 
+    var dictArray: [String] = []
     
     
     //---------------------------
@@ -19,24 +20,33 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         print("")
         print("les valeurs: \(addOBJ.dictionnary!)")
+        print("Singleton: \(Singleton.singletonInstance.dictionnary!)")
 
-       // textView.text = String(describing: addOBJ.dictionnary!)
-
-        //textView.text = String(Singleton.singletonInstance.dictionnary.count)
-        
         //-----------
         
         print("The keys selected:")
         
+        
+        
         for (key,value) in Singleton.singletonInstance.dictionnary {
-            
             
             if(value == true)
             {
+                keys.append(key)
+                dictArray.append(key)
                 print(key)
             }
             
         }
+        //----------------------------------------
+        
+        print(dictArray)
+        
+        
+      
+
+        
+        
         
       
     }
@@ -58,14 +68,19 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
        // cell.textLabel!.text = addOBJ.keys[indexPath.row]
        //--------------------
         
-            if(addOBJ.values[indexPath.row] == true)
-            {
-                cell.textLabel!.text = addOBJ.keys[indexPath.row]
-                
+//            if(addOBJ.values[indexPath.row] == true)
+//            {
+//                cell.textLabel!.text = addOBJ.keys[indexPath.row]
+//              
+//            }
 
+        if(Array(Singleton.singletonInstance.dictionnary.values)[indexPath.row] == true){
             
+            cell.textLabel!.text = addOBJ.keys[indexPath.row]
         }
-
+        
+    
+        
         
         
         //--------------------
@@ -78,6 +93,8 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.blue
+        
+        
     }
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

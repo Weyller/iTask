@@ -11,6 +11,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let managerJson = jsonManager()
     //---------------------------
     
+    var aDict: [String:Bool] = [:]
+    //------------------------
     @IBOutlet weak var loadButton: UIButton!
     
     //-----------------------------
@@ -18,36 +20,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         super.viewDidLoad()
         
-        //  if !Singleton.singletonInstance.dictionnary.isEmpty{
-        
-        //    for (k,_) in Singleton.singletonInstance.dictionnary{
-        
-        //       Singleton.singletonInstance.dictionnary[k] = false
-        
-        //   }
-        //   print("Viewdidload dict: \(Singleton.singletonInstance.dictionnary)")
-        
-        
-        //  }
-        
-    }
-    //---------------------------
-    override func viewWillAppear(_ animated: Bool) {
-        
-        if let index = self.tableView.indexPathForSelectedRow{
-            
-            self.tableView.deselectRow(at: index, animated: true)
-            
-        }
+ 
+//          if !Singleton.singletonInstance.dictionnary.isEmpty{
+//        
+//            for (k,_) in Singleton.singletonInstance.dictionnary{
+//        
+//               Singleton.singletonInstance.dictionnary[k] = false
+//        
+//           }
+//           print("Viewdidload dict: \(Singleton.singletonInstance.dictionnary)")
+//        
+//        
+//          }
         
     }
-    
-    
     //---------------------------
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.tableView.reloadData()
+       
+        
     }
     
     
@@ -72,7 +64,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------------
     @IBAction func saveToJson(_ sender: UIButton) {
         
-        //alert("Saving list to online database...")
+        alert("Saving list to online database...")
         managerJson.saveDictionaryToJason()
         print("Data saved successfully")
     }
@@ -82,13 +74,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let reloadAlert = UIAlertController(title: "Alert - Loading database from online site...", message: "Do you really want to load the online database and replace with this one?", preferredStyle: UIAlertControllerStyle.alert)
         
         reloadAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
+            
             self.do_table_refresh()
+            
         }))
         
         reloadAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
         }))
         
         present(reloadAlert, animated: true, completion: nil)
+   
         
     }
     //---------------------------
@@ -130,9 +126,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.textColor = UIColor.black
         cell.backgroundColor = UIColor.clear
         
-        print("From addOject.keys \(addObject.keys)")
-        print("refreshing data")
-        
         return cell
     }
     //---------------------
@@ -141,38 +134,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.lightGray
+        
+                
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
         
-        // let isTapped = Singleton.singletonInstance.dictionnary[key] == false ? true : false
+         let isTapped = Singleton.singletonInstance.dictionnary[key] == false ? true : false
         
-        // Singleton.singletonInstance.dictionnary[key] = isTapped
-        
-        
+         Singleton.singletonInstance.dictionnary[key] = isTapped
+    
+       
         //---------------------------------------------
-        if !Singleton.singletonInstance.dictionnary[key]!
-        {
-            Singleton.singletonInstance.dictionnary[key] = true
-        }
-            
-        else if Singleton.singletonInstance.dictionnary[key]! && selectedCell.isSelected
-        {
-            
-            Singleton.singletonInstance.dictionnary[key] = false
-        }
-        else{
-            
-            Singleton.singletonInstance.dictionnary[key] = false
-            
-        }
+//        if !Singleton.singletonInstance.dictionnary[key]!
+//        {
+//            Singleton.singletonInstance.dictionnary[key] = true
+//        
+//        } else {
+//            
+//            Singleton.singletonInstance.dictionnary[key] = false
+//        }
+//        
         
-        
-        
+        print("Viewdidload dict: \(Singleton.singletonInstance.dictionnary)")
         //---------------------------------------
         
+        print("Selected keys : \(key)")
         
-        
-        print("Singleton: \(Singleton.singletonInstance.dictionnary)")
     }
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -224,52 +211,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     
                     
-                    print("Printing Dict: \(dict)")
-                    print("keys \(keys)")
-                                                            //======================
-                    for k in keys{
-                        self.addObject.keys.append(k)
+                    print("Printing json: \(dict)")
+                    
+                    //======================
+                    var index = 0
+                    
+                    for key in keys{
+                        for _ in values{
+                            
+                            dictionaryLoaded[key] = values[index]
+                        }
+                        index += 1
                     }
-
+                    //------------------------------
                     
-                    DispatchQueue.main.async {
-                        
-                        //self.addObject.saveToSingleton()
-                        self.tableView.reloadData()
-                        
-                    }
-                    print("keys in addObjet \(self.addObject.keys)")
-
+                  
                     
+                    //print("Loaded dict: \(dictionaryLoaded)")
                     
-                    //-----------------------------
+                     self.addObject.dictionnary = dictionaryLoaded
                     
-//                    var index = 0
-//                    
-//                    for key in keys{
-//                      
-//                        for _ in values{
-//                            
-//                            dictionaryLoaded[key] = values[index]
-//                            
-//                        }
-//                        index += 1
-//                    }
-                    
-                   // print(dictionaryLoaded)
-                    
-                   // print("keys in addObjet BEFORE\(self.addObject.keys)")
-                    
-                    //Singleton.singletonInstance.dictionnary = dictionaryLoaded
+                    //Singleton.singletonInstance.saveData()
                     
                     print(Singleton.singletonInstance.dictionnary)
+                    self.addObject.saveToSingleton()
                     
-                   // Singleton.singletonInstance.saveData()
-                    print("keys in addObjet AFTER\(self.addObject.keys)")
+                    print(self.addObject.keys)
                     
-                 //   print(Singleton.singletonInstance.dictionnary)
-                   
                     
+                            DispatchQueue.main.async { () -> Void in
+                    
+                                print("reloading !!!!")
+                                 self.tableView.reloadData()
+                                
+                            }
                     
                     
                     //--------------
@@ -279,31 +254,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         task.resume()
+
         
-        
-        
-        
-//        DispatchQueue.main.async {
-//            
-//            //self.managerJson.loadDictionaryFromJason()
-//            //self.addObject.saveToSingleton()
-//            self.tableView.reloadData()
-//            
-//        }
+
     }
     
-    
-    /* ---------------------------------------*/
-    func doReloadData()
-    {
-        managerJson.loadDictionaryFromJason()
-        
-        addObject.saveToSingleton()
-        self.setNeedsFocusUpdate()
-        self.tableView.reloadData()
-        
-    }
-    /* ---------------------------------------*/
+
     func alert(_ theMessage: String)
     {
         let refreshAlert = UIAlertController(title: "Message...", message: theMessage, preferredStyle: .alert)
