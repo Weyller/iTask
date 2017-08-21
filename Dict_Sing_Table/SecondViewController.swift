@@ -51,11 +51,8 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     //---------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
-        
-       // cell.textLabel!.text = addOBJ.keys[indexPath.row]
-       //--------------------
-        
-//            if(addOBJ.values[indexPath.row] == true)
+      
+        //            if(addOBJ.values[indexPath.row] == true)
 //            {
 //                cell.textLabel!.text = addOBJ.keys[indexPath.row]
 //              

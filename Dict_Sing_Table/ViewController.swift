@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
            }
 
-
+        }
         
 //        for (k, _) in addObject.dictionary {
 //            
@@ -54,22 +54,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         
         print("Viewdidload dict: \(addObject.dictionary)")
-       }
+       
     //----------------------------------------------------------------
     
     }
     
     //---------------------------------------------------------------
-    override func viewWillDisappear(_ animated: Bool) {
-        //
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
     }
-    
-    
-    
     //----------------------------------------------------------------
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        let indexPath = IndexPath(row: 0, section: 0) //Set your row and section
+        if let cell = tableView.cellForRow(at: indexPath) {
+            //--------
+            
+            if !Singleton.singletonInstance.dictionary.isEmpty{
+                
+                for (k,_) in Singleton.singletonInstance.dictionary{
+                    
+                    if (Singleton.singletonInstance.dictionary[k] == true){
+                        
+                        cell.contentView.backgroundColor = UIColor.lightGray
+                    }
+                    
+                }
+                
+            }
+            
+            //---------
+            
+            
+        }
+
+        
+        
      }
     
     //---------------------------
@@ -157,13 +180,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     //---------------------
+    
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
         selectedCell.contentView.backgroundColor = UIColor.lightGray
         
-                
+        
+        
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
         
