@@ -38,20 +38,17 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
         //----------------------------------------
         
-        print(dictArray)
+        print("dictArray: \(dictArray)")
         
         
     }
-    //---------------------------
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    //---------------------------
+    
     
     //---------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
-        return addOBJ.dictionary.count
+//return addOBJ.dictionary.count
+    return dictArray.count
     }
     //---------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,12 +63,13 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
 //              
 //            }
 
-        if(Array(Singleton.singletonInstance.dictionary.values)[indexPath.row] == true){
-            
-            cell.textLabel!.text = addOBJ.keys[indexPath.row]
-        }
+//        if(Array(Singleton.singletonInstance.dictionary.values)[indexPath.row] == true){
+//            
+//            cell.textLabel!.text = addOBJ.keys[indexPath.row]
+//        }
         
     
+        cell.textLabel!.text = dictArray[indexPath.row]
         
         
         
@@ -91,7 +89,12 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-           addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
+            
+           
+            dictArray.remove(at: indexPath.row)
+          // addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
+            
+            
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
     }

@@ -21,32 +21,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         
  
-//          if !Singleton.singletonInstance.dictionnary.isEmpty{
+//          if !Singleton.singletonInstance.dictionary.isEmpty{
 //        
-//            for (k,_) in Singleton.singletonInstance.dictionnary{
+//            for (k,_) in Singleton.singletonInstance.dictionary{
 //        
-//               Singleton.singletonInstance.dictionnary[k] = false
+//               Singleton.singletonInstance.dictionary[k] = false
 //        
 //           }
-//           print("Viewdidload dict: \(Singleton.singletonInstance.dictionnary)")
+//           print("Viewdidload dict: \(Singleton.singletonInstance.dictionary)")
 //        
 //        
 //          }
         
-        for (k, _) in addObject.dictionary {
-            
-            addObject.dictionary.updateValue(false, forKey: k)
-            
-        }
-        
-        
-        
-        for i in 0..<addObject.values.count {
-            
-            addObject.values[i] = false
-            
-        }
-        
+//        for (k, _) in addObject.dictionary {
+//            
+//            addObject.dictionary.updateValue(false, forKey: k)
+//            
+//        }
+//        
+//        
+//        
+//        for i in 0..<addObject.values.count {
+//            
+//            addObject.values[i] = false
+//            
+//        }
+        print("Viewdidload dict: \(addObject.dictionary)")
         
         
         
@@ -164,13 +164,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
        
         //---------------------------------------------
-//        if !Singleton.singletonInstance.dictionnary[key]!
+//        if !Singleton.singletonInstance.dictionary[key]!
 //        {
-//            Singleton.singletonInstance.dictionnary[key] = true
+//            Singleton.singletonInstance.dictSelect[key] = true
 //        
 //        } else {
 //            
-//            Singleton.singletonInstance.dictionnary[key] = false
+//            Singleton.singletonInstance.dictSelect[key] = false
 //        }
 //        
         
