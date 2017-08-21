@@ -31,14 +31,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if (Singleton.singletonInstance.dictionary[k] == true){
                     
                     
-                   
                 }
         
            }
-//           print("Viewdidload dict: \(Singleton.singletonInstance.dictionary)")
-//        
-//        
-//          }
+
+
         
 //        for (k, _) in addObject.dictionary {
 //            
