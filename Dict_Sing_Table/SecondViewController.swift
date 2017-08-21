@@ -88,19 +88,17 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             
-           
-            dictArray.remove(at: indexPath.row)
-          // addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
+            let cle = Array(Singleton.singletonInstance.dictionary.keys)[indexPath.row]
             
-            
-            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+            if editingStyle == UITableViewCellEditingStyle.delete {
+                
+                dictArray.remove(at: indexPath.row)
+                // addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
+                 Singleton.singletonInstance.dictionary.removeValue(forKey: cle)
+                tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+            }
+    //---------------------
         }
     }
-    //---------------------
-    
-    
-    
-    
-    
 }
 //==============================
