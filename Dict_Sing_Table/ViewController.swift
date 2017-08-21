@@ -23,45 +23,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         super.viewDidLoad()
         
- 
-          if !Singleton.singletonInstance.dictionary.isEmpty{
-        
-            for (k,_) in Singleton.singletonInstance.dictionary{
-        
-                if (Singleton.singletonInstance.dictionary[k] == true){
-                    
-                    
-                }
-        
-           }
-
-        }
-        
-//        for (k, _) in addObject.dictionary {
-//            
-//            addObject.dictionary.updateValue(false, forKey: k)
-//            
-//        }
-//        
-//        
-//        
-//        for i in 0..<addObject.values.count {
-//            
-//            addObject.values[i] = false
-//            
-//        }
-        
-
         
         print("Viewdidload dict: \(addObject.dictionary)")
        
-    //----------------------------------------------------------------
-    
+        
     }
     
     //---------------------------------------------------------------
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         
     }
     //----------------------------------------------------------------
@@ -69,17 +40,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let indexPath = IndexPath(row: 0, section: 0) //Set your row and section
-        if let cell = tableView.cellForRow(at: indexPath) {
+        //self.tableView.allowsMultipleSelection = true
+        //self.tableView.reloadData()
+        let indexPath = IndexPath(row:0, section: 0) //Set your row and section
+                if let cell = tableView.cellForRow(at: indexPath) {
             //--------
-            
-            if !Singleton.singletonInstance.dictionary.isEmpty{
-                
-                for (k,_) in Singleton.singletonInstance.dictionary{
-                    
-                    if (Singleton.singletonInstance.dictionary[k] == true){
+                    for i in 0..<addObject.keys.count{
                         
-                        cell.contentView.backgroundColor = UIColor.lightGray
+                        
+                        if !addObject.dictionary.isEmpty{
+                            
+                           
+                                if (addObject.values[i]==true){
+                                    
+                                   self.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: .none)
+                                                                    }
+                         
+                            
+                        }
+                        
+                    
+                        
+                   }
+                   
+                   
+                    
+            if !addObject.dictionary.isEmpty{
+                
+                for (k,_) in addObject.dictionary{
+                    
+                    if (addObject.dictionary[k] == true){
+                        
+                        //cell.contentView.backgroundColor = UIColor.lightGray
                     }
                     
                 }
@@ -91,6 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
 
+        
         
         
      }
@@ -149,6 +142,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 self.tableView.deselectRow(at: index[i], animated: true)
                 
+                DispatchQueue.main.async { () -> Void in
+                    
+                    print("reloading !!!!")
+                    self.tableView.reloadData()
+                    
+                }
+
             }
             
             
@@ -198,6 +198,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
          Singleton.singletonInstance.dictionary[key] = isTapped
     
+         Singleton.singletonInstance.saveData()
        
         //---------------------------------------------
 //        if !Singleton.singletonInstance.dictionary[key]!
