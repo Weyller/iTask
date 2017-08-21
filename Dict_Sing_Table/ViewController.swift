@@ -33,6 +33,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        
 //          }
         
+        for (k, _) in addObject.dictionary {
+            
+            addObject.dictionary.updateValue(false, forKey: k)
+            
+        }
+        
+        
+        
+        for i in 0..<addObject.values.count {
+            
+            addObject.values[i] = false
+            
+        }
+        
+        
+        
+        
+        
+        
     }
     //---------------------------
     
@@ -102,9 +121,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             
         }
-        for (k,_) in Singleton.singletonInstance.dictionnary{
+        for (k,_) in Singleton.singletonInstance.dictionary{
             
-            Singleton.singletonInstance.dictionnary[k] = false
+            Singleton.singletonInstance.dictionary[k] = false
             
         }
         
@@ -114,7 +133,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //---------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
-        return addObject.dictionnary.count
+        return addObject.dictionary.count
     }
     //---------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,9 +158,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
         
-         let isTapped = Singleton.singletonInstance.dictionnary[key] == false ? true : false
+         let isTapped = Singleton.singletonInstance.dictionary[key] == false ? true : false
         
-         Singleton.singletonInstance.dictionnary[key] = isTapped
+         Singleton.singletonInstance.dictionary[key] = isTapped
     
        
         //---------------------------------------------
@@ -155,7 +174,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        }
 //        
         
-        print("Viewdidload dict: \(Singleton.singletonInstance.dictionnary)")
+        print("Viewdidload dict: \(Singleton.singletonInstance.dictionary)")
         //---------------------------------------
         
         print("Selected keys : \(key)")
@@ -229,11 +248,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     //print("Loaded dict: \(dictionaryLoaded)")
                     
-                     self.addObject.dictionnary = dictionaryLoaded
+                     self.addObject.dictionary = dictionaryLoaded
                     
-                    //Singleton.singletonInstance.saveData()
+                    Singleton.singletonInstance.saveData()
                     
-                    print(Singleton.singletonInstance.dictionnary)
+                    print(Singleton.singletonInstance.dictionary)
+                    
                     self.addObject.saveToSingleton()
                     
                     print(self.addObject.keys)

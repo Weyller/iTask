@@ -18,7 +18,7 @@ class jsonManager{
         
 
         //--------------------------
-        let dictionary = Singleton.singletonInstance.dictionnary
+        let dictionary = Singleton.singletonInstance.dictionary
         var urlToSend = "http://localhost/dashboard/weyller/jsonPHP/add.php?json=["
         
         //var urlToSend = "http://localhost:8888/dashboard/weyller/jsonPHP/add.php?json=["
@@ -48,86 +48,7 @@ class jsonManager{
         dataTask.resume()
     }
     //-------------------------------------------------------------------
-    
-    
-//    func loadDictionaryFromJason(){
-//        
-//       
-//        var dict : [String: String] = [:]
-//        var dictionaryLoaded:[String: Bool] = [:]
-//        var keys:[String] = []
-//        var values:[Bool] = []
-//        //------------------------
-//        let requestURL: NSURL = NSURL(string: "http://localhost:/dashboard/weyller/jsonPHP/data.json")!
-//        //let requestURL: NSURL = NSURL(string: "http://localhost:8888/dashboard/weyller/jsonPHP/data2.json")!
-//        //let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/geneau/poo2/data.json")!
-//        let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url:
-//            requestURL as URL)
-//        let session = URLSession.shared
-//        
-//        let task = session.dataTask(with: urlRequest as URLRequest) {
-//            (data, response, error) -> Void in
-//            
-//            let httpResponse = response as! HTTPURLResponse
-//            let statusCode = httpResponse.statusCode
-//            
-//            if (statusCode == 200) {
-//                print("Tout fonctionne correctement...")
-//                do{
-//                    let json = try JSONSerialization.jsonObject(with:
-//                        data!, options:.allowFragments)
-//                    
-//                    dict  = json as! [String : String]
-//                    //======================
-//                    for(k, v) in dict{
-//                        
-//                        keys.append(k)
-//                        if(v == "false"){
-//                            
-//                            values.append(false)
-//                        }
-//                        else {
-//                            values.append(true)
-//                        }
-//                    }
-//                    
-//                    
-//                    print("Printing Dict: \(dict)")
-//                    
-//                    //======================
-//                    var index = 0
-//                    
-//                    for key in keys{
-//                        for _ in values{
-//                            
-//                            dictionaryLoaded[key] = values[index]
-//                        }
-//                        index += 1
-//                    }
-//                    //------------------------------
-//                    
-//                                       
-//                    //print("Loaded dict: \(dictionaryLoaded)")
-//                    
-//                    Singleton.singletonInstance.dictionnary = dictionaryLoaded
-//                    
-//                    Singleton.singletonInstance.saveData()
-//                    
-//                    print(Singleton.singletonInstance.dictionnary)
-//                            print(self.addObj.keys)
-//                    
-//                    
-//                    //--------------
-//                }catch {
-//                    print("Erreur Json: \(error)")
-//                }
-//            }
-//        }
-//        task.resume()
-//    }
-    
-    //--------------------------------------------------------------
-        
+          
         
         
 }

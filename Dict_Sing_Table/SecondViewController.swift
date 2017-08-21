@@ -19,16 +19,14 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         print("")
-        print("les valeurs: \(addOBJ.dictionnary!)")
-        print("Singleton: \(Singleton.singletonInstance.dictionnary!)")
+        print("les valeurs: \(addOBJ.dictionary!)")
+        print("Singleton: \(Singleton.singletonInstance.dictionary!)")
 
         //-----------
         
         print("The keys selected:")
-        
-        
-        
-        for (key,value) in Singleton.singletonInstance.dictionnary {
+                
+        for (key,value) in Singleton.singletonInstance.dictionary {
             
             if(value == true)
             {
@@ -43,12 +41,6 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         print(dictArray)
         
         
-      
-
-        
-        
-        
-      
     }
     //---------------------------
     override func didReceiveMemoryWarning() {
@@ -59,7 +51,7 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     //---------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
-        return addOBJ.dictionnary.count
+        return addOBJ.dictionary.count
     }
     //---------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,7 +66,7 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
 //              
 //            }
 
-        if(Array(Singleton.singletonInstance.dictionnary.values)[indexPath.row] == true){
+        if(Array(Singleton.singletonInstance.dictionary.values)[indexPath.row] == true){
             
             cell.textLabel!.text = addOBJ.keys[indexPath.row]
         }

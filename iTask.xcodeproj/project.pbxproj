@@ -14,7 +14,6 @@
 		9B05E7C51F0C09DF001A0BB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B05E7C31F0C09DF001A0BB9 /* LaunchScreen.storyboard */; };
 		9B05E7CE1F0C0D68001A0BB9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B05E7CD1F0C0D68001A0BB9 /* SecondViewController.swift */; };
 		9B05E7D01F0C0E29001A0BB9 /* Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B05E7CF1F0C0E29001A0BB9 /* Add.swift */; };
-		9B05E7D21F0C0E43001A0BB9 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B05E7D11F0C0E43001A0BB9 /* Display.swift */; };
 		9B05E7D41F0C0E78001A0BB9 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B05E7D31F0C0E78001A0BB9 /* Singleton.swift */; };
 		9B664B261F2914F80059F3E8 /* jsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B664B251F2914F80059F3E8 /* jsonManager.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +28,6 @@
 		9B05E7C61F0C09DF001A0BB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B05E7CD1F0C0D68001A0BB9 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		9B05E7CF1F0C0E29001A0BB9 /* Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Add.swift; sourceTree = "<group>"; };
-		9B05E7D11F0C0E43001A0BB9 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		9B05E7D31F0C0E78001A0BB9 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		9B664B251F2914F80059F3E8 /* jsonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = jsonManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +67,6 @@
 				9B664B251F2914F80059F3E8 /* jsonManager.swift */,
 				9B05E7BE1F0C09DF001A0BB9 /* Main.storyboard */,
 				9B05E7CF1F0C0E29001A0BB9 /* Add.swift */,
-				9B05E7D11F0C0E43001A0BB9 /* Display.swift */,
 				9B05E7D31F0C0E78001A0BB9 /* Singleton.swift */,
 				9B05E7CD1F0C0D68001A0BB9 /* SecondViewController.swift */,
 			);
@@ -160,7 +157,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B05E7D21F0C0E43001A0BB9 /* Display.swift in Sources */,
 				9B05E7D41F0C0E78001A0BB9 /* Singleton.swift in Sources */,
 				9B05E7CE1F0C0D68001A0BB9 /* SecondViewController.swift in Sources */,
 				9B05E7D01F0C0E29001A0BB9 /* Add.swift in Sources */,

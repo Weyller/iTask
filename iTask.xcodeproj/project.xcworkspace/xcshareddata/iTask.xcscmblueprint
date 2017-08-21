@@ -4,12 +4,14 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "935AC465C783028E39280F8C7313C2F1A67F3EFB" : 9223372036854775807,
     "CF1BEEE806F56DE7118F7F4428A39EC49780E363" : 9223372036854775807,
     "2FA12690F12A68D8B91EA7491BA3FA0A7A187C8E" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "33F2764C-C778-4BF8-95F8-CE0462678EBE",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "CF1BEEE806F56DE7118F7F4428A39EC49780E363" : "iTask%20-%2010aout\/",
+    "935AC465C783028E39280F8C7313C2F1A67F3EFB" : "",
+    "CF1BEEE806F56DE7118F7F4428A39EC49780E363" : "iTask\/",
     "2FA12690F12A68D8B91EA7491BA3FA0A7A187C8E" : ".."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "iTask",
@@ -20,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Weyller\/Swift---Playgrounds.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2FA12690F12A68D8B91EA7491BA3FA0A7A187C8E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Weyller\/Swift---Playgrounds.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "935AC465C783028E39280F8C7313C2F1A67F3EFB"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Weyller\/iTask.git",
