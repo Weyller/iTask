@@ -7,7 +7,6 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     let addOBJ = Add()
     
-    var dic: [String: Bool]!
     var keys: [String] = []
     var values: [Bool] = []
 
@@ -30,7 +29,6 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
             
             if(value == true)
             {
-                keys.append(key)
                 dictArray.append(key)
                 print(key)
             }

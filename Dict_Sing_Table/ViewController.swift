@@ -15,19 +15,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //------------------------
     @IBOutlet weak var loadButton: UIButton!
     
+    //----------------------------
+
+    
     //-----------------------------
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
  
-//          if !Singleton.singletonInstance.dictionary.isEmpty{
-//        
-//            for (k,_) in Singleton.singletonInstance.dictionary{
-//        
-//               Singleton.singletonInstance.dictionary[k] = false
-//        
-//           }
+          if !Singleton.singletonInstance.dictionary.isEmpty{
+        
+            for (k,_) in Singleton.singletonInstance.dictionary{
+        
+                if (Singleton.singletonInstance.dictionary[k] == true){
+                    
+                    
+                   
+                }
+        
+           }
 //           print("Viewdidload dict: \(Singleton.singletonInstance.dictionary)")
 //        
 //        
@@ -46,21 +53,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //            addObject.values[i] = false
 //            
 //        }
+        
+
+        
         print("Viewdidload dict: \(addObject.dictionary)")
-        
-        
-        
-        
-        
+       }
+    //----------------------------------------------------------------
+    
     }
-    //---------------------------
+    
+    //---------------------------------------------------------------
+    override func viewWillDisappear(_ animated: Bool) {
+        //
+    }
+    
+    
+    
+    //----------------------------------------------------------------
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       
-        
-    }
-    
+     }
     
     //---------------------------
     @IBAction func addButton(_ sender: UIButton) {
@@ -77,7 +90,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             addField.text = ""
             
         }
-        
         
     }
     //---------------------------
@@ -244,9 +256,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     //------------------------------
                     
-                  
-                    
-                    //print("Loaded dict: \(dictionaryLoaded)")
+            
                     
                      self.addObject.dictionary = dictionaryLoaded
                     
