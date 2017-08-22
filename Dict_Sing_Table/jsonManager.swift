@@ -21,7 +21,7 @@ class jsonManager{
         let dictionary = Singleton.singletonInstance.dictionary
         var urlToSend = "http://localhost/dashboard/weyller/jsonPHP/add.php?json=["
         
-        //var urlToSend = "http://localhost:8888/dashboard/weyller/jsonPHP/add.php?json=["
+       
         //var urlToSend = "http://localhost/dashboard/geneau/poo2/add.php?json=["
         
         var counter = 0

@@ -45,24 +45,15 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     //---------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
-//return addOBJ.dictionary.count
+
     return dictArray.count
     }
+    
     //---------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
       
-        //            if(addOBJ.values[indexPath.row] == true)
-//            {
-//                cell.textLabel!.text = addOBJ.keys[indexPath.row]
-//              
-//            }
-
-//        if(Array(Singleton.singletonInstance.dictionary.values)[indexPath.row] == true){
-//            
-//            cell.textLabel!.text = addOBJ.keys[indexPath.row]
-//        }
-        
+  
     
         cell.textLabel!.text = dictArray[indexPath.row]
         
@@ -91,7 +82,12 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 
                 dictArray.remove(at: indexPath.row)
                 // addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
-                 Singleton.singletonInstance.dictionary.removeValue(forKey: cle)
+                
+                if(Array(Singleton.singletonInstance.dictionary.values)[indexPath.row] == true) {
+                    Singleton.singletonInstance.dictionary.removeValue(forKey: cle)
+                }
+                
+                
                 tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
             }
     //---------------------
