@@ -22,8 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        
+       
         print("Viewdidload dict: \(addObject.dictionary)")
        
         
@@ -33,6 +32,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        //--------------------------
+        for i in 0..<addObject.keys.count{
+            
+            if !addObject.dictionary.isEmpty{
+                
+                if (addObject.values[i]==true){
+                    
+                    self.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: .none)
+                    
+                }
+                
+                
+            }
+            
+        }
+        
+        //-----------------------
+        
         
     }
     //----------------------------------------------------------------
@@ -40,30 +57,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //self.tableView.allowsMultipleSelection = true
-        //self.tableView.reloadData()
+        self.tableView.allowsMultipleSelection = true
+        self.tableView.reloadData()
         let indexPath = IndexPath(row:0, section: 0) //Set your row and section
                 if let cell = tableView.cellForRow(at: indexPath) {
-            //--------
+            //--------------------------
                     for i in 0..<addObject.keys.count{
                         
-                        
-                        if !addObject.dictionary.isEmpty{
-                            
-                           
+                            if !addObject.dictionary.isEmpty{
+                         
                                 if (addObject.values[i]==true){
                                     
                                    self.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: .none)
-                                                                    }
+                                    
+                            }
                          
                             
                         }
                         
-                    
-                        
                    }
                    
-                   
+             //-----------------------
                     
             if !addObject.dictionary.isEmpty{
                 
@@ -78,7 +92,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
             }
             
-            //---------
+           //-------------------------
             
             
         }
@@ -99,7 +113,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         {
             //alert("Adding one new task to the list...")
             addObject.addValue(keyToAdd: addField.text!)
-            tableView.reloadData()
+            
+            self.tableView.allowsMultipleSelection = true
+            self.tableView.reloadData()
+
+            //--------------------------
+            for i in 0..<addObject.keys.count{
+                
+                if !addObject.dictionary.isEmpty{
+                    
+                    if (addObject.values[i]==true){
+                        
+                        self.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: .none)
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+          
+            
+            //----------------------
             addField.text = ""
             
         }
@@ -187,9 +223,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
-        selectedCell.contentView.backgroundColor = UIColor.lightGray
-        
-        
+        //selectedCell.contentView.backgroundColor = UIColor.lightGray
         
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
@@ -219,11 +253,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+       
         if editingStyle == UITableViewCellEditingStyle.delete {
             addObject.removeValue(keyToRemove: addObject.keys[indexPath.row])
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
         }
+        //--------------------------------
+       
+        self.tableView.reloadData()
         
+        //--------------------------
+        for i in 0..<addObject.keys.count{
+            
+            if !addObject.dictionary.isEmpty{
+                
+                if (addObject.values[i]==true){
+                    
+                    self.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: .none)
+                    
+                }
+                
+                
+            }
+            
+        }
+
         
     }
     //---------------------
