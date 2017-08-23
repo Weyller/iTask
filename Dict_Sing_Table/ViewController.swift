@@ -341,7 +341,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     Singleton.singletonInstance.saveData()
                     
-                    print(Singleton.singletonInstance.dictionary)
+                   // print(Singleton.singletonInstance.dictionary)
                     
                     self.addObject.saveToSingleton()
                     
