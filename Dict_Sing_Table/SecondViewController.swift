@@ -81,7 +81,7 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
             if editingStyle == UITableViewCellEditingStyle.delete {
                 
                 dictArray.remove(at: indexPath.row)
-                // addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
+                //addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
                 
                 if(Array(Singleton.singletonInstance.dictionary.values)[indexPath.row] == true) {
                     Singleton.singletonInstance.dictionary.removeValue(forKey: cle)

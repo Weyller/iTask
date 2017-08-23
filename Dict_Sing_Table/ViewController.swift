@@ -23,8 +23,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         super.viewDidLoad()
        
-        print("Viewdidload dict: \(addObject.dictionary)")
-       
         
     }
     
@@ -59,9 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.tableView.allowsMultipleSelection = true
         self.tableView.reloadData()
-        let indexPath = IndexPath(row:0, section: 0) //Set your row and section
-                if let cell = tableView.cellForRow(at: indexPath) {
-            //--------------------------
+                    //--------------------------
                     for i in 0..<addObject.keys.count{
                         
                             if !addObject.dictionary.isEmpty{
@@ -76,30 +72,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         }
                         
                    }
-                   
-             //-----------------------
-                    
-            if !addObject.dictionary.isEmpty{
                 
-                for (k,_) in addObject.dictionary{
-                    
-                    if (addObject.dictionary[k] == true){
-                        
-                        //cell.contentView.backgroundColor = UIColor.lightGray
-                    }
-                    
-                }
-                
-            }
-            
-           //-------------------------
-            
-            
-        }
-
-        
-        
-        
      }
     
     //---------------------------
@@ -111,11 +84,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         else
         {
-            //alert("Adding one new task to the list...")
             addObject.addValue(keyToAdd: addField.text!)
             
-            self.tableView.allowsMultipleSelection = true
-            self.tableView.reloadData()
+            DispatchQueue.main.async { () -> Void in
+                
+                Singleton.singletonInstance.saveData()
+                
+                self.addObject.saveToSingleton()
+                self.tableView.reloadData()
+                
+            }
 
             //--------------------------
             for i in 0..<addObject.keys.count{
@@ -146,7 +124,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         alert("Saving list to online database...")
         managerJson.saveDictionaryToJason()
-        print("Data saved successfully")
+        
     }
     //---------------------------
     @IBAction func loadJsonFromWeb(_ sender: UIButton) {
@@ -180,7 +158,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 DispatchQueue.main.async { () -> Void in
                     
-                    print("reloading !!!!")
+                    
                     self.tableView.reloadData()
                     
                 }
@@ -222,9 +200,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath as IndexPath)!
-        //selectedCell.contentView.backgroundColor = UIColor.lightGray
-        
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
         
@@ -234,21 +209,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
          Singleton.singletonInstance.saveData()
        
-        //---------------------------------------------
-//        if !Singleton.singletonInstance.dictionary[key]!
-//        {
-//            Singleton.singletonInstance.dictSelect[key] = true
-//        
-//        } else {
-//            
-//            Singleton.singletonInstance.dictSelect[key] = false
-//        }
-//        
         
-        print("Viewdidload dict: \(Singleton.singletonInstance.dictionary)")
-        //---------------------------------------
         
-        print("Selected keys : \(key)")
+       
         
     }
     //---------------------
@@ -301,7 +264,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let statusCode = httpResponse.statusCode
             
             if (statusCode == 200) {
-                print("Tout fonctionne correctement...")
+               
                 do{
                     let json = try JSONSerialization.jsonObject(with:
                         data!, options:.allowFragments)
@@ -321,7 +284,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     
                     
-                    print("Printing json: \(dict)")
                     
                     //======================
                     var index = 0
@@ -339,18 +301,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                      self.addObject.dictionary = dictionaryLoaded
                     
-                    Singleton.singletonInstance.saveData()
                     
-                   // print(Singleton.singletonInstance.dictionary)
                     
-                    self.addObject.saveToSingleton()
-                    
-                    print(self.addObject.keys)
+                    //print(self.addObject.keys)
                     
                     
                             DispatchQueue.main.async { () -> Void in
                     
-                                print("reloading !!!!")
+                                Singleton.singletonInstance.saveData()
+                                
+                                self.addObject.saveToSingleton()
                                  self.tableView.reloadData()
                                 
                             }
