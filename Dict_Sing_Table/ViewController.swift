@@ -16,13 +16,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var loadButton: UIButton!
     
     //----------------------------
-
+    var arrButtons:[UIButton]!
+    
+    @IBOutlet weak var btnAdd: UIButton!
+    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnLoad: UIButton!
+    @IBOutlet weak var btnReset: UIButton!
+    @IBOutlet weak var btnList: UIButton!
+    
     
     //-----------------------------
     override func viewDidLoad() {
         
         super.viewDidLoad()
        
+        arrButtons = [btnAdd,btnList,btnLoad,btnSave,btnReset]
+        
+        
+     //   ---------------------- Change bordures des boutons
+        
+        for x in 0...4
+                {
+                    arrButtons[x].layer.cornerRadius = 5;
+                }
         
     }
     

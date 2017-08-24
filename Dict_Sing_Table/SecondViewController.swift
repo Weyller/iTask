@@ -11,20 +11,17 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     var values: [Bool] = []
 
     var dictArray: [String] = []
+    //--------------------------
+    
+    @IBOutlet weak var btnBack: UIButton!
+    
     
     
     //---------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("")
-        print("les valeurs: \(addOBJ.dictionary!)")
-        print("Singleton: \(Singleton.singletonInstance.dictionary!)")
-
-        //-----------
         
-        print("The keys selected:")
-                
         for (key,value) in Singleton.singletonInstance.dictionary {
             
             if(value == true)
@@ -35,9 +32,13 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
             
         }
         //----------------------------------------
+   
+       
+        //   ---------------------- Change bordures des boutons
         
-        print("dictArray: \(dictArray)")
-        
+       
+            btnBack.layer.cornerRadius = 5;
+     
         
     }
     
