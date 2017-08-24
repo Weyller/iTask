@@ -145,8 +145,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var keys:[String] = []
         var values:[Bool] = []
         //------------------------
-        let requestURL: NSURL = NSURL(string: "http://localhost:/dashboard/weyller/jsonPHP/data.json")!
-        //let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/geneau/poo2/data.json")!
+        
+        let requestURL: NSURL = NSURL(string: "http://localhost/dashboard/geneau/poo2/data.json")!
         let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url:
             requestURL as URL)
         let session = URLSession.shared

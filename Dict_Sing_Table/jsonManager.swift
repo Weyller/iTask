@@ -14,10 +14,8 @@ class jsonManager{
     func saveDictionaryToJason() {
         
         let dictionary = Singleton.singletonInstance.dictionary
-        var urlToSend = "http://localhost/dashboard/weyller/jsonPHP/add.php?json=["
         
-       
-        //var urlToSend = "http://localhost/dashboard/geneau/poo2/add.php?json=["
+        var urlToSend = "http://localhost/dashboard/geneau/poo2/add.php?json=["
         
         var counter = 0
         let total = dictionary?.count
