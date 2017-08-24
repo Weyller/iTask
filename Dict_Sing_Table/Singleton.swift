@@ -1,12 +1,15 @@
 //==============================
 import Foundation
 //==============================
+
 class Singleton {
+    
+    //MARKS: Variables Declaration
     //---------------------------
     static let singletonInstance = Singleton()
     var dictionary: [String: Bool]!
-    var dictSelect: [String: Bool]!
     
+    //MARKS: UserDefault for data persistence
     let userDefault = UserDefaults.standard
     //---------------------------
     init() {
@@ -16,21 +19,11 @@ class Singleton {
             dictionary = userDefault.object(forKey: "data") as! [String : Bool]!
         }
         
-        if userDefault.object(forKey: "data2") ==  nil {
-            userDefault.setValue(dictSelect, forKey: "data2")
-        } else {
-            dictSelect = userDefault.object(forKey: "data2") as! [String : Bool]!
-        }
-
-        
-        
-        
         
     }
-    //---------------------------
+    //--------------------------- Update userdefaults and Dictionary
     func saveData() {
         userDefault.setValue(dictionary, forKey: "data")
-        userDefault.setValue(dictSelect, forKey: "data2")
     }
     //---------------------------
 }

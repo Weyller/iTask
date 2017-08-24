@@ -1,23 +1,18 @@
-//
-//  jsonManager.swift
-//  Dict_Sing_Table
-//
-//  Created by Local Admin on 2017-07-26.
-//  Copyright © 2017 eleves. All rights reserved.
-//
-
+//=====================
 import Foundation
 import UIKit
+//=====================
+
 class jsonManager{
     
     
-    
     var addObj = Add()
+    //-----------------
     
+    
+     //-------------------------- Method to save data to remote server
     func saveDictionaryToJason() {
         
-
-        //--------------------------
         let dictionary = Singleton.singletonInstance.dictionary
         var urlToSend = "http://localhost/dashboard/weyller/jsonPHP/add.php?json=["
         
@@ -47,12 +42,11 @@ class jsonManager{
         }
         dataTask.resume()
     }
-    //-------------------------------------------------------------------
-          
+    //------------------------------------          
         
         
 }
-
+//=========================================
     
     
 

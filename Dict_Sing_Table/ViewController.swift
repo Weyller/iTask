@@ -1,7 +1,10 @@
 //==============================
 import UIKit
 //==============================
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+
+    //MARK: Variables Declarations
     //---------------------------
     @IBOutlet weak var addField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -23,9 +26,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var btnLoad: UIButton!
     @IBOutlet weak var btnReset: UIButton!
     @IBOutlet weak var btnList: UIButton!
+    //-------------------------------------
     
     
-    //-----------------------------
+    //MARK: Methods loaded for main View
+    //-------------------------------------------------------------
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -33,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         arrButtons = [btnAdd,btnList,btnLoad,btnSave,btnReset]
         
         
-     //   ---------------------- Change bordures des boutons
+     //  ---------------------- Change bordures des boutons
         
         for x in 0...4
                 {
@@ -42,38 +47,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    //---------------------------------------------------------------
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        //--------------------------
-        for i in 0..<addObject.keys.count{
-            
-            if !addObject.dictionary.isEmpty{
-                
-                if (addObject.values[i]==true){
-                    
-                    self.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: .none)
-                    
-                }
-                
-                
-            }
-            
-        }
-        
-        //-----------------------
-        
-        
-    }
     //----------------------------------------------------------------
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.tableView.allowsMultipleSelection = true
-        self.tableView.reloadData()
-                    //--------------------------
+               self.tableView.reloadData()
+        
+                    //-----------------------  Will check if Dictionary's values are true to highlight them
+
                     for i in 0..<addObject.keys.count{
                         
                             if !addObject.dictionary.isEmpty{
@@ -91,113 +73,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
      }
     
-    //---------------------------
-    @IBAction func addButton(_ sender: UIButton) {
-        
-        if (addField.text?.isEmpty)!
-        {
-            return
-        }
-        else
-        {
-            addObject.addValue(keyToAdd: addField.text!)
-            
-            DispatchQueue.main.async { () -> Void in
-                
-                Singleton.singletonInstance.saveData()
-                
-                self.addObject.saveToSingleton()
-                self.tableView.reloadData()
-                
-            }
-
-            //--------------------------
-            for i in 0..<addObject.keys.count{
-                
-                if !addObject.dictionary.isEmpty{
-                    
-                    if (addObject.values[i]==true){
-                        
-                        self.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: .none)
-                        
-                    }
-                    
-                    
-                }
-                
-            }
-            
-          
-            
-            //----------------------
-            addField.text = ""
-            
-        }
-        
-    }
-    //---------------------------
-    @IBAction func saveToJson(_ sender: UIButton) {
-        
-        alert("Saving list to online database...")
-        managerJson.saveDictionaryToJason()
-        
-    }
-    //---------------------------
-    @IBAction func loadJsonFromWeb(_ sender: UIButton) {
-        
-        let reloadAlert = UIAlertController(title: "Alert - Loading database from online site...", message: "Do you really want to load the online database and replace with this one?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        reloadAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
-            
-            
-            self.do_table_refresh()
-            
-        }))
-        
-        reloadAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
-        }))
-        
-        present(reloadAlert, animated: true, completion: nil)
-   
-        
-    }
-    //---------------------------
     
-    @IBAction func resetSelection(_ sender: UIButton) {
-        
-        if let index = self.tableView.indexPathsForSelectedRows{
-            
-            print(index.count)
-            for i in 0..<index.count{
-                
-                self.tableView.deselectRow(at: index[i], animated: true)
-                
-                DispatchQueue.main.async { () -> Void in
-                    
-                    
-                    self.tableView.reloadData()
-                    
-                }
-
-            }
-            
-            
-        }
-        for (k,_) in Singleton.singletonInstance.dictionary{
-            
-            Singleton.singletonInstance.dictionary[k] = false
-            
-        }
-        
-    }
-    
-    
+        //MARKS: TableView Methods
     //---------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.backgroundColor = UIColor.clear
         return addObject.dictionary.count
     }
-    //---------------------
+    //---------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:"proto")
         
@@ -209,13 +92,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
-    //---------------------
     
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+    //---------------------------
+      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     
         //--------------------------------------
         let key = addObject.keys[indexPath.row]
         
@@ -224,9 +104,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
          Singleton.singletonInstance.dictionary[key] = isTapped
     
          Singleton.singletonInstance.saveData()
-       
-        
-        
        
         
     }
@@ -241,7 +118,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        
         self.tableView.reloadData()
         
-        //--------------------------
+        //-------------------------- Will check if Dictionary's values are true to highlight them
         for i in 0..<addObject.keys.count{
             
             if !addObject.dictionary.isEmpty{
@@ -259,7 +136,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         
     }
-    //---------------------
+    // MARKS: Load from remote server
+    //--------------------------- Method that retrive data from database on remote server
     func do_table_refresh()
     {
         var dict : [String: String] = [:]
@@ -316,12 +194,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
                     
                      self.addObject.dictionary = dictionaryLoaded
-                    
-                    
-                    
-                    //print(self.addObject.keys)
-                    
-                    
+            
                             DispatchQueue.main.async { () -> Void in
                     
                                 Singleton.singletonInstance.saveData()
@@ -344,7 +217,114 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
+    
+    //--------------------------- Methods to add a new taks to current view
+    @IBAction func addButton(_ sender: UIButton) {
+        
+        if (addField.text?.isEmpty)!
+        {
+            return
+        }
+        else
+        {
+            addObject.addValue(keyToAdd: addField.text!)
+            
+            DispatchQueue.main.async { () -> Void in
+                
+                Singleton.singletonInstance.saveData()
+                
+                self.addObject.saveToSingleton()
+                self.tableView.reloadData()
+                
+            }
+            
+            //-------------------------- Will check if Dictionary's values are true to highlight them
+            for i in 0..<addObject.keys.count{
+                
+                if !addObject.dictionary.isEmpty{
+                    
+                    if (addObject.values[i]==true){
+                        
+                        self.tableView.selectRow(at: IndexPath(row: i, section: 0), animated: false, scrollPosition: .none)
+                        
+                    }
+                    
+                    
+                }
+                
+            }
+            
+            
+            //----------------------
+            addField.text = ""
+            
+        }
+        
+    }
+    // MARKS: Save data to remote server
+    //---------------------------  Method to save current table listview on the database on remote server
+    @IBAction func saveToJson(_ sender: UIButton) {
+        
+        alert("Saving list to online database...")
+        managerJson.saveDictionaryToJason()
+        
+    }
+    
+    //--------------------------- Method to confirm user want to load data from database
+    @IBAction func loadJsonFromWeb(_ sender: UIButton) {
+        
+        let reloadAlert = UIAlertController(title: "Alert - Loading database from online site...", message: "Do you really want to load the online database and replace with this one?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        reloadAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            
+            
+            self.do_table_refresh()
+            
+        }))
+        
+        reloadAlert.addAction(UIAlertAction(title: "No", style: .default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        present(reloadAlert, animated: true, completion: nil)
+        
+        
+    }
+    //---------------------------  Methods that will deselect values in current view and put values at false
+    
+    @IBAction func resetSelection(_ sender: UIButton) {
+        
+        if let index = self.tableView.indexPathsForSelectedRows{
+            
+            
+            for i in 0..<index.count{
+                
+                self.tableView.deselectRow(at: index[i], animated: true)
+                
+                DispatchQueue.main.async { () -> Void in
+                    
+                    
+                    self.tableView.reloadData()
+                    
+                }
+                
+            }
+            
+            
+        }
+        for (k,_) in Singleton.singletonInstance.dictionary{
+            
+            Singleton.singletonInstance.dictionary[k] = false
+            
+        }
+        
+    }
+    
 
+    
+    
+    
+    // MARKS: Alerts Manager
+    //--------------------------- Method to manage alert messages
     func alert(_ theMessage: String)
     {
         let refreshAlert = UIAlertController(title: "Message...", message: theMessage, preferredStyle: .alert)

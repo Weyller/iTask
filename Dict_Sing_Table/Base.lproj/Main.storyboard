@@ -204,7 +204,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.04514964539226414" green="0.8167281108130422" blue="0.97680455450000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.035445988178253174" green="0.816059410572052" blue="0.97588318586349487" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3ua-2t-69X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1.5" id="0T4-ob-sF9">
                                 <variation key="heightClass=compact" constant="251"/>
