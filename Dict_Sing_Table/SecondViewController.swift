@@ -74,24 +74,20 @@ class SecondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     }
     //---------------------
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            
-            let cle = Array(Singleton.singletonInstance.dictionary.keys)[indexPath.row]
+      
+     
+        let cle = Array(Singleton.singletonInstance.dictionary.keys)[indexPath.row]
             
             if editingStyle == UITableViewCellEditingStyle.delete {
                 
                 dictArray.remove(at: indexPath.row)
-                //addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
-                
-                if(Array(Singleton.singletonInstance.dictionary.values)[indexPath.row] == true) {
-                    Singleton.singletonInstance.dictionary.removeValue(forKey: cle)
-                }
-                
+                addOBJ.removeValue(keyToRemove: addOBJ.keys[indexPath.row])
+                Singleton.singletonInstance.dictionary.removeValue(forKey: cle)
+        
                 
                 tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
             }
-    //---------------------
-        }
+   print(addOBJ.dictionary)
     }
 }
 //==============================
